@@ -1,0 +1,6 @@
+name: bank-statement-converter
+description: A Helm Chart for the bank statement converter
+version: 0.0.1
+apiVersion: v2
+sources:
+home:
