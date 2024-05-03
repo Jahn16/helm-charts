@@ -29,7 +29,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: openai-secret
-                  key: api-key
+                  key: apikey
           image: jpdeoliveiraferreira/ytgpt-backend:latest
           name: ytgpt-backend
           ports:

@@ -1,2 +1,5 @@
 ingress:
-  host: "ytgpt.jahn16.com"
+  host: "<your-ingress-host>"
+
+openai:
+  apikey: "<your-base64-encoded-api-key-here>"
