@@ -2,13 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: minimal-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
-  - http:
-    - host: "ytgpt.jahn16.com"
+  - host: "ytgpt.jahn16.com"
+    http:
       paths:
       - path: /
         pathType: Prefix
@@ -16,11 +14,11 @@ spec:
           service:
             name: ytgpt-frontend
             port:
-              number: 80
+              number: 3000
       - path: /api
         pathType: Prefix
         backend:
           service:
             name: ytgpt-backend
             port:
-              number: 80
+              number: 8000
