@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -c
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.service: ytgpt-frontend
+  name: ytgpt-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: ytgpt-frontend
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -c
+        kompose.version: 1.32.0 (HEAD)
+      labels:
+        io.kompose.network/yt-gpt-default: "true"
+        io.kompose.service: ytgpt-frontend
+    spec:
+      containers:
+        - env:
+            - name: PUBLIC_BACKEND_URL
+              value: http://localhost:8000
+          image: jpdeoliveiraferreira/ytgpt-frontend:latest
+          name: ytgpt-frontend
+          ports:
+            - containerPort: 3000
+              hostPort: 3000
+              protocol: TCP
+      restartPolicy: Always
