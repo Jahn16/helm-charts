@@ -24,7 +24,7 @@ spec:
       containers:
         - env:
             - name: PUBLIC_BACKEND_URL
-              value: http://localhost:8000
+              value: http://{{ .Values.ingress.host }}
           image: jpdeoliveiraferreira/ytgpt-frontend:latest
           name: ytgpt-frontend
           ports:

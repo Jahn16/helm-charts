@@ -24,9 +24,12 @@ spec:
       containers:
         - env:
             - name: CORS_ORIGINS
-              value: '["http://localhost:3000"]'
+              value: '["{{ .Values.ingress.host }}"]'
             - name: OPENAI_API_KEY
-              value: <OPENAI_API_KEY>
+              valueFrom:
+                secretKeyRef:
+                  name: openai-secret
+                  key: api-key
           image: jpdeoliveiraferreira/ytgpt-backend:latest
           name: ytgpt-backend
           ports:
