@@ -9,16 +9,17 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
+        pathType: Exact
         backend:
           service:
             name: ytgpt-frontend
             port:
               number: 3000
-      - path: /api
+      - path: /api/v1
         pathType: Prefix
         backend:
           service:
             name: ytgpt-backend
             port:
               number: 8000
+
